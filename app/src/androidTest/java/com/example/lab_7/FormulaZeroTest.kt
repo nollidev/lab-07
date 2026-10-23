@@ -52,4 +52,42 @@ class FormulaZeroTest {
             .onNodeWithText("FormulaZero Home")
             .assertExists()
     }
+
+    @Test
+    fun navigate_to_drivers_add_driver_and_return_home() {
+        // navigate to driver screen
+        composeTestRule
+            .onNodeWithTag("driverButton")
+            .performClick()
+
+        // verify race screen
+        composeTestRule
+            .onNodeWithText("Registered Drivers")
+            .assertExists()
+
+        // enter race location
+        composeTestRule
+            .onNodeWithTag("driverInput")
+            .performTextInput("Max Verstappen")
+
+        // add race location
+        composeTestRule
+            .onNodeWithTag("addDriverButton")
+            .performClick()
+
+        // verify race appears
+        composeTestRule
+            .onNodeWithText("Max Verstappen")
+            .assertExists()
+
+        // return to home screen
+        composeTestRule
+            .onNodeWithTag("backButton")
+            .performClick()
+
+        // verify return to home screen
+        composeTestRule
+            .onNodeWithText("FormulaZero Home")
+            .assertExists()
+    }
 }
